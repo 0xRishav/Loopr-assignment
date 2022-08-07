@@ -4,6 +4,7 @@ import WorkOrderView from "../features/workOrder/WorkOrderView";
 import { useLocation } from "react-router-dom";
 import Loader from "./Loader/Loader";
 import { useSelector } from "react-redux";
+import NotFoundPage from "./NotFoundPage";
 
 function Dashboard() {
   const location = useLocation();
@@ -16,8 +17,10 @@ function Dashboard() {
         <Loader />
       ) : location.pathname === "/upload-work-order" ? (
         <UploadWorkOrderView />
-      ) : (
+      ) : location.pathname === "/" ? (
         <WorkOrderView />
+      ) : (
+        <NotFoundPage />
       )}
     </div>
   );
